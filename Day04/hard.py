@@ -11,11 +11,18 @@ def check( digs ):
 
     double = False
     prev = -1
+    eq = 0
+    
     for num in digs:
-        if prev == num: double = True
         if prev > num: return False
-        prevPrev = prev
+        if prev == num:
+            eq += 1
+        else:
+            if eq == 1: double = True
+            eq = 0
         prev = num
+
+    if eq == 1: double = True
     return double
 
 
